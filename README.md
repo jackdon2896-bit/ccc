@@ -1,360 +1,427 @@
-# Cell-Cell Communication Spatial Transcriptomics Pipeline
+# 🧬 Spatial Transcriptomics + scRNA-seq Integration Pipeline
 
-[![Nextflow](https://img.shields.io/badge/nextflow-%E2%89%A525.04.0-brightgreen.svg)](https://www.nextflow.io/)
-[![Docker](https://img.shields.io/badge/docker-enabled-blue.svg)](https://www.docker.com/)
-[![Wave](https://img.shields.io/badge/wave-enabled-orange.svg)](https://seqera.io/wave/)
+**Production-ready Nextflow pipeline for integrating spatial transcriptomics with scRNA-seq reference data**
 
-Advanced bioinformatics pipeline for spatial transcriptomics analysis with integrated cell-cell communication inference and machine learning tissue classification.
-
-## 🚀 Features
-
-- **📊 Spatial Transcriptomics Analysis**
-  - Automated image preprocessing and quality control
-  - Cellpose-based cell segmentation
-  - ROI extraction and coordinate mapping
-
-- **🔬 Cell-Cell Communication**
-  - LIANA integration for ligand-receptor analysis
-  - CellPhoneDB database support
-  - Network visualization and chord diagrams
-
-- **🤖 Machine Learning Classification**
-  - Random Forest tissue classification
-  - Feature importance analysis
-  - Cross-validation with confidence metrics
-
-- **🧬 Multi-modal Integration**
-  - scRNA-seq reference integration
-  - Harmony batch correction
-  - Cell type annotation transfer
-
-- **☁️ Cloud-Ready**
-  - AWS Batch deployment configured
-  - Seqera Platform compatible
-  - Wave container provisioning
-  - Fusion file system support
+[![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A525.04-23aa62.svg)](https://www.nextflow.io/)
+[![run with conda](https://img.shields.io/badge/run%20with-conda-3EB049?logo=anaconda)](https://docs.conda.io/en/latest/)
+[![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?logo=docker)](https://www.docker.com/)
+[![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg)](https://sylabs.io/docs/)
 
 ---
 
-## 📋 Requirements
+## 🎯 Overview
 
-- **Nextflow:** >= 25.04.0
-- **Container Engine:** Docker or Singularity
-- **Resources:** 16+ CPUs, 64GB RAM recommended
+This pipeline integrates **spatial transcriptomics** data with **scRNA-seq reference datasets** to enable:
+
+- ✅ **Cell type deconvolution** in spatial data
+- ✅ **Unified UMAP embedding** of both modalities
+- ✅ **Cluster identification** across spatial and scRNA-seq
+- ✅ **Quality control** and filtering
+- ✅ **Publication-quality visualizations**
+
+**Perfect for:** Academic researchers, industry bioinformaticians, spatial biology projects
 
 ---
 
-## 🛠️ Quick Start
+## 🚀 Quick Start
 
 ### 1. Clone Repository
+
 ```bash
 git clone https://github.com/jackdon2896-bit/ccc.git
 cd ccc
 ```
 
-### 2. Download Test Dataset
-```bash
-# Mouse brain dataset (RECOMMENDED)
-wget https://cf.10xgenomics.com/samples/spatial-exp/2.0.0/Visium_Mouse_Olfactory_Bulb/Visium_Mouse_Olfactory_Bulb_image.tif -O input/mouse_brain.tif
+### 2. Edit Parameters
 
-wget https://cf.10xgenomics.com/samples/spatial-exp/2.0.0/Visium_Mouse_Olfactory_Bulb/Visium_Mouse_Olfactory_Bulb_filtered_feature_bc_matrix.h5 -O input/mouse_brain.h5
+Edit `params_mode_a.json` with your S3 paths:
+
+```json
+{
+  "scrna_data": "s3://your-bucket/scrna_data.h5ad",
+  "spatial_data": "s3://your-bucket/spatial_data.h5ad",
+  "output_dir": "s3://your-bucket/results/run_001"
+}
 ```
 
-### 3. Run Pipeline
+### 3. Run on Seqera Cloud
+
+**Option A: Seqera Cloud (Recommended - FREE 100 hours!)**
+
+1. Go to https://cloud.seqera.io
+2. Sign up (GitHub/Google)
+3. Add this pipeline to Launchpad
+4. Upload `params_mode_a.json`
+5. Launch!
+
+**See detailed guide:** [SEQERA_DEPLOYMENT_GUIDE.md](SEQERA_DEPLOYMENT_GUIDE.md)
+
+**Option B: Local Testing**
+
 ```bash
 nextflow run main.nf \
-  --tiff input/mouse_brain.tif \
-  --h5 input/mouse_brain.h5 \
-  --outdir results
-```
-
-### 4. View Results
-Open `results/PIPELINE_REPORT.html` in your browser!
-
----
-
-## 💻 Usage
-
-### Basic Command
-```bash
-nextflow run main.nf \
-  --tiff <path_to_tiff_image> \
-  --h5 <path_to_h5_matrix> \
-  --outdir <output_directory>
-```
-
-### With scRNA-seq Integration
-```bash
-nextflow run main.nf \
-  --tiff input/spatial.tif \
-  --h5 input/spatial.h5 \
-  --scrna_ref input/reference.h5ad \
-  --outdir results
-```
-
-### With Custom Parameters
-```bash
-nextflow run main.nf \
-  --tiff input/spatial.tif \
-  --h5 input/spatial.h5 \
-  --min_genes 500 \
-  --max_mito_pct 15 \
-  --resolution 0.6 \
-  --outdir results
+  -params-file params_mode_a.json \
+  -profile docker \
+  -resume
 ```
 
 ---
 
-## 🎛️ Parameters
+## 📊 Pipeline Workflow
 
-### Required Parameters
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `--tiff` | path | Spatial TIFF image file |
-| `--h5` or `--sra_ids` | path/string | H5 matrix file or SRA accessions |
+```
+Input Data
+    ├── scRNA-seq (AnnData .h5ad)
+    └── Spatial (AnnData .h5ad with spatial coords)
+         ↓
+    INTEGRATE_SCRNA_DATA
+    ├── Load and validate data
+    ├── Quality control filtering
+    ├── Normalization (log1p)
+    ├── Feature selection (top 2000 genes)
+    ├── PCA (50 components)
+    ├── Integration (concatenate)
+    ├── Batch correction (harmony/scanorama)
+    ├── UMAP embedding
+    └── Leiden clustering
+         ↓
+    SPATIAL_ANALYSIS
+    ├── Spatial neighbor graph
+    ├── Spatial statistics
+    ├── Cell type deconvolution
+    ├── Spatial clustering
+    └── Visualization (spatial + UMAP)
+         ↓
+Output
+    ├── integrated_image.h5ad (main output)
+    ├── integration_qc.png
+    ├── integration_metrics.txt
+    ├── spatial_analysis_results.h5ad
+    ├── spatial_plots.png
+    └── deconvolution_results.csv
+```
 
-### Optional Parameters
+---
+
+## 📁 Input Formats
+
+### scRNA-seq Data
+
+**Supported formats:**
+- `.h5ad` (AnnData - recommended)
+- `.h5` (10X Genomics filtered_feature_bc_matrix.h5)
+- MTX format (matrix.mtx + barcodes.tsv + features.tsv)
+
+**Required structure:**
+```python
+AnnData object with:
+- X: Expression matrix (cells × genes)
+- obs: Cell metadata (cell_type, clusters, etc.)
+- var: Gene metadata (gene_names, gene_ids)
+```
+
+### Spatial Data
+
+**Supported formats:**
+- `.h5ad` (AnnData with spatial coordinates)
+- `.h5` (Visium filtered_feature_bc_matrix.h5 + spatial folder)
+- Visium output directory
+
+**Required structure:**
+```python
+AnnData object with:
+- X: Expression matrix (spots × genes)
+- obs: Spot metadata
+- var: Gene metadata
+- obsm['spatial']: Spatial coordinates (N × 2)
+- uns['spatial']: Spatial metadata (images, scalefactors)
+```
+
+---
+
+## ⚙️ Parameters
+
+### Core Parameters
+
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `--scrna_ref` | path | null | scRNA-seq reference for integration |
-| `--outdir` | path | results | Output directory |
-| `--min_genes` | int | 200 | Minimum genes per cell |
-| `--min_cells` | int | 3 | Minimum cells per gene |
-| `--max_mito_pct` | int | 20 | Maximum mitochondrial % |
-| `--cellpose_model` | string | cyto2 | Cellpose model type |
-| `--cell_diameter` | int | 30 | Expected cell diameter |
-| `--n_neighbors` | int | 15 | Neighbors for graph construction |
-| `--resolution` | float | 0.8 | Leiden clustering resolution |
-| `--comm_method` | string | liana | Communication method |
-| `--ml_model` | string | random_forest | ML classifier type |
-| `--cv_folds` | int | 5 | Cross-validation folds |
+| `scrna_data` | path | required | Path to scRNA-seq data (S3 or local) |
+| `spatial_data` | path | required | Path to spatial data (S3 or local) |
+| `output_dir` | path | required | Output directory (S3 or local) |
+| `mode` | string | `'full'` | Analysis mode: 'full' or 'preprocessed' |
+
+### Analysis Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `n_top_genes` | int | 2000 | Number of highly variable genes |
+| `n_pcs` | int | 50 | Number of principal components |
+| `resolution` | float | 0.5 | Leiden clustering resolution |
+| `spot_diameter` | int | 100 | Spatial spot diameter (µm) |
+| `n_neighbors` | int | 15 | Number of neighbors for graphs |
+
+### Resource Limits
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `max_cpus` | int | 8 | Maximum CPUs per process |
+| `max_memory` | string | '64.GB' | Maximum memory per process |
+| `max_time` | string | '6.h' | Maximum time per process |
 
 ---
 
-## 📁 Output Structure
+## 📦 Outputs
+
+### Integration Results
 
 ```
-results/
-├── PIPELINE_REPORT.html          # Main interactive report
-├── summary_statistics.txt         # Text summary
-├── preprocessing/
-│   ├── preprocessed.tif
-│   └── preprocessing_qc.png
-├── segmentation/
-│   ├── cell_masks.npy
-│   ├── segmentation_overlay.png
-│   └── segmentation_stats.txt
-├── roi/
-│   ├── roi_coordinates.csv
-│   └── roi_visualization.png
-├── qc/
-│   ├── spatial_adata.h5ad
-│   ├── qc_metrics.png
-│   └── qc_summary.txt
-├── clustering/
-│   ├── clustered_adata.h5ad
-│   ├── umap_clusters.png
-│   └── cluster_stats.txt
-├── communication/
-│   ├── communication_results.h5ad
-│   ├── ligand_receptor_network.csv
-│   └── communication_summary.txt
-├── ml_classification/
-│   ├── ml_predictions.h5ad
-│   ├── feature_importance.csv
-│   ├── classification_report.txt
-│   └── confusion_matrix.png
-├── integration/              # If --scrna_ref provided
-│   ├── integrated_adata.h5ad
-│   ├── integration_plot.png
-│   └── integration_summary.txt
-└── visualizations/
-    ├── network_plot.png
-    ├── dotplot_interactions.png
-    ├── chord_diagram.png
-    ├── feature_importance_plot.png
-    ├── prediction_confidence.png
-    └── cluster_comparison.png
+output_dir/
+└── integration/
+    ├── integrated_image.h5ad          ← Main output (use for Mode B!)
+    ├── integration_qc.png             ← QC plots (before/after filtering)
+    ├── integration_metrics.txt        ← Metrics (cells, genes, clusters)
+    └── versions.txt                   ← Software versions
+```
+
+### Spatial Analysis Results
+
+```
+output_dir/
+└── spatial/
+    ├── spatial_analysis_results.h5ad  ← Spatial results with deconvolution
+    ├── spatial_plots.png              ← Spatial visualizations
+    ├── spatial_metrics.txt            ← Spatial statistics
+    └── deconvolution_results.csv      ← Cell type predictions per spot
+```
+
+### Execution Reports
+
+```
+output_dir/
+└── reports/
+    ├── timeline.html                  ← Execution timeline
+    ├── report.html                    ← Resource usage report
+    ├── trace.txt                      ← Detailed trace
+    └── dag.html                       ← Pipeline DAG
 ```
 
 ---
 
-## 🐳 Container Information
+## 🐳 Container
 
-**Pre-built Wave Container:**
+Pre-built container with all dependencies:
+
 ```
-community.wave.seqera.io/library/anndata_cellphonedb_cellpose_celltypist_pruned:f40b275367e7e126
-```
-
-**Included Tools:**
-- Python 3.11 (compact)
-- Scanpy, Squidpy, Cellpose
-- LIANA, CellPhoneDB
-- scvi-tools, Celltypist
-- scikit-learn, PyTorch
-- sra-tools, FastQC, MultiQC
-
-See [CONTAINER.md](CONTAINER.md) for full details.
-
----
-
-## ☁️ Cloud Deployment
-
-### AWS Batch
-```bash
-nextflow run main.nf \
-  -profile aws \
-  --tiff s3://my-bucket/input/spatial.tif \
-  --h5 s3://my-bucket/input/spatial.h5 \
-  --outdir s3://my-bucket/results
+quay.io/biocontainers/scanpy:1.9.3--pyhdfd78af_0
 ```
 
-### Seqera Platform
-```bash
-nextflow run main.nf \
-  -profile seqera \
-  --tiff <data_link_path> \
-  --h5 <data_link_path> \
-  --outdir <output_path>
-```
+**Includes:**
+- Python 3.10
+- scanpy 1.9.3
+- anndata 0.8.0
+- numpy, pandas, matplotlib, seaborn
+- scikit-learn
+- harmonypy (batch correction)
+- scanorama (alternative batch correction)
 
-Configure AWS details in `nextflow.config` before running.
-
----
-
-## 📊 Test Datasets
-
-See [input/DATASETS.md](input/DATASETS.md) for curated test datasets:
-
-1. **Mouse Brain Visium** (RECOMMENDED)
-   - Always works, well-characterized
-   - ~500 MB, 15+ cell types
-   
-2. **Mouse Kidney Spatial**
-   - Disease model with SRA data
-   - ~800 MB, 20+ cell types
-   
-3. **Human Breast Cancer**
-   - Clinical application example
-   - ~1 GB, 25+ cell types
+**No manual installation needed!** ✨
 
 ---
 
 ## 🔧 Configuration Profiles
 
-### Local Execution (Docker)
+### Local Testing
+
 ```bash
-nextflow run main.nf -profile docker
+# Docker (default)
+nextflow run main.nf -profile docker -params-file params_mode_a.json
+
+# Singularity (HPC)
+nextflow run main.nf -profile singularity -params-file params_mode_a.json
 ```
 
-### Local Execution (Singularity)
-```bash
-nextflow run main.nf -profile singularity
-```
+### Seqera Cloud
 
-### AWS Batch
 ```bash
-nextflow run main.nf -profile aws
-```
+# Community Showcase (FREE 100 hours!)
+nextflow run main.nf -profile seqera_showcase -params-file params_mode_a.json
 
-### Seqera Platform
-```bash
-nextflow run main.nf -profile seqera
-```
-
-### Test Profile
-```bash
-nextflow run main.nf -profile test
+# Your AWS account
+nextflow run main.nf -profile awsbatch -params-file params_mode_a.json
 ```
 
 ---
 
-## 📈 Performance
+## 💰 Cost Estimate
 
-**Typical Runtime (Mouse Brain Dataset):**
-- Local (16 CPUs, 64GB RAM): ~30-45 minutes
-- AWS Batch (m5.4xlarge): ~20-30 minutes
-- Seqera Platform (optimized): ~15-25 minutes
+### Community Showcase (FREE)
+- **Platform:** $0
+- **Compute:** $0 (100 free CPU hours)
+- **Storage:** $0 (included)
+- **Total:** **$0** ✨
 
-**Resource Requirements by Module:**
-- Preprocessing: 2 CPUs, 4GB RAM
-- Segmentation: 4 CPUs, 16GB RAM
-- Communication: 8 CPUs, 32GB RAM
-- ML Classification: 8 CPUs, 32GB RAM
+### Your AWS Account
+- **Integration:** ~$4.80 (8 CPUs × 2h)
+- **Spatial:** ~$1.20 (4 CPUs × 1h)
+- **Storage:** ~$1.25 (50 GB)
+- **Total:** **~$7.45 per run**
+
+**Cost optimization:**
+- Use `-resume` to avoid recomputing
+- Use spot instances (70% cheaper)
+- Reduce resources if data < 5000 cells
+
+---
+
+## 🧪 Testing
+
+### Test with Public Data
+
+```bash
+# Download test data (10X Visium + PBMC scRNA-seq)
+nextflow run main.nf \
+  --scrna_data https://datasets.cellxgene.cziscience.com/... \
+  --spatial_data https://cf.10xgenomics.com/samples/... \
+  --output_dir test_results \
+  -profile docker
+```
+
+### Validate Output
+
+```python
+import scanpy as sc
+
+# Load integrated data
+adata = sc.read_h5ad('test_results/integration/integrated_image.h5ad')
+
+# Check structure
+print(f"Cells: {adata.n_obs}")
+print(f"Genes: {adata.n_vars}")
+print(f"Clusters: {len(adata.obs['leiden'].unique())}")
+
+# Visualize
+sc.pl.umap(adata, color=['leiden', 'batch', 'n_genes'])
+```
 
 ---
 
 ## 🐛 Troubleshooting
 
-### Issue: Container pull fails
-**Solution:**
-```bash
-# Pre-pull the container
-docker pull community.wave.seqera.io/library/anndata_cellphonedb_cellpose_celltypist_pruned:f40b275367e7e126
-```
+### Common Issues
 
-### Issue: Out of memory
-**Solution:** Increase Docker memory or use cluster profile:
-```bash
-nextflow run main.nf -profile aws  # Use cloud resources
-```
+**1. Out of Memory (exit 137)**
 
-### Issue: No significant interactions found
-**Solution:** Adjust communication parameters:
-```bash
-nextflow run main.nf --comm_method liana --min_spots 3
-```
-
-### Issue: Permission denied (Docker)
-**Solution:** Add user mapping in `nextflow.config`:
+Increase memory in `nextflow.config`:
 ```groovy
-docker.runOptions = '-u $(id -u):$(id -g)'
+process {
+    withName: 'INTEGRATE_SCRNA_DATA' {
+        memory = '128.GB'  // Double from 64 GB
+    }
+}
 ```
 
+**2. S3 Access Denied**
+
+Verify S3 permissions:
+```bash
+aws s3 ls s3://your-bucket/data/
+```
+
+**3. File Not Found**
+
+Use **full S3 paths** (not directories):
+```json
+"scrna_data": "s3://bucket/path/file.h5ad"  ✅
+"scrna_data": "s3://bucket/path/"           ❌
+```
+
+**See full guide:** [SEQERA_DEPLOYMENT_GUIDE.md](SEQERA_DEPLOYMENT_GUIDE.md)
+
 ---
 
-## 📚 Citation
+## 📚 Documentation
 
-If you use this pipeline, please cite:
-
-- **Nextflow:** Di Tommaso et al., Nature Biotechnology 2017
-- **Scanpy:** Wolf et al., Genome Biology 2018
-- **LIANA:** Dimitrov et al., Nature Methods 2022
-- **Cellpose:** Stringer et al., Nature Methods 2021
-- **Wave:** Seqera Labs (https://seqera.io/wave/)
+- **[SEQERA_DEPLOYMENT_GUIDE.md](SEQERA_DEPLOYMENT_GUIDE.md)** - Complete deployment guide (814 lines!)
+  - Quick start (5 minutes)
+  - Academic FREE Cloud Pro access
+  - Detailed setup instructions
+  - Monitoring and getting results
+  - Troubleshooting
+  - Cost breakdown
 
 ---
 
-## 📝 License
+## 🎓 Academic Use
 
-MIT License - see LICENSE file for details
+**Get Seqera Cloud Pro for FREE!**
+
+If you're in academia:
+1. Go to https://seqera.io/pricing/
+2. Apply for academic access
+3. Get unlimited runs + professional support
+
+**Perfect for:**
+- Publications and research
+- Job applications (shows cloud + bioinformatics skills)
+- Building your portfolio
+
+---
+
+## 📖 Citation
+
+If you use this pipeline in your research, please cite:
+
+```
+Spatial Transcriptomics + scRNA-seq Integration Pipeline
+GitHub: https://github.com/jackdon2896-bit/ccc
+```
+
+**Dependencies to cite:**
+- **Nextflow:** Di Tommaso et al. (2017) Nature Biotechnology
+- **Scanpy:** Wolf et al. (2018) Genome Biology
+- **Seqera Platform:** https://seqera.io
 
 ---
 
 ## 🤝 Contributing
 
 Contributions welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+1. Fork repository
+2. Create feature branch
+3. Test changes thoroughly
+4. Submit pull request
 
 ---
 
-## 💬 Support
+## 📝 License
 
-- **Issues:** https://github.com/jackdon2896-bit/ccc/issues
-- **Discussions:** https://github.com/jackdon2896-bit/ccc/discussions
-- **Email:** seqera-ai@seqera.io
+MIT License - see LICENSE file
 
 ---
 
-## 🙏 Acknowledgments
+## 💪 Support
 
-- Seqera Platform team for Wave container service
-- 10x Genomics for public test datasets
-- Scanpy, LIANA, and Cellpose development teams
+**Issues or questions?**
+- GitHub Issues: https://github.com/jackdon2896-bit/ccc/issues
+- Seqera Community: https://community.seqera.io
+- Nextflow Slack: Join #seqera-platform
 
 ---
 
-**Built with ❤️ by Seqera AI**
+## 🚀 What's Next?
+
+After running this pipeline:
+
+1. **Analyze results** - Load `integrated_image.h5ad` in Python/R
+2. **Iterate with Mode B** - Use integrated data for faster reruns
+3. **Publish findings** - Generate publication-quality figures
+4. **Share pipeline** - Add to CV/resume and portfolio
+
+**This pipeline demonstrates enterprise-level bioinformatics skills perfect for job applications!** 💼
+
+---
+
+**Version:** 1.0.0  
+**Last Updated:** 2026-04-28  
+**Maintained by:** jackdon2896-bit  
+**Built with:** Nextflow DSL2, Scanpy, Seqera Platform

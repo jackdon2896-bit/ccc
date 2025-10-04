@@ -1,0 +1,14 @@
+{
+  "scrna_data": "s3://YOUR-BUCKET/scrna_data/filtered_feature_bc_matrix.h5",
+  "spatial_data": "s3://YOUR-BUCKET/spatial_data/filtered_feature_bc_matrix.h5",
+  "output_dir": "s3://YOUR-BUCKET/results/mode_a_run_1",
+  "mode": "full",
+  "n_top_genes": 2000,
+  "n_pcs": 50,
+  "resolution": 0.5,
+  "spot_diameter": 100,
+  "n_neighbors": 15,
+  "max_cpus": 8,
+  "max_memory": "64.GB",
+  "max_time": "6.h"
+}
