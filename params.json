@@ -1,0 +1,19 @@
+{
+  "spatial_h5":    "s3://dinesh-rdr-omics-2026/cell-com-input/mouse_brain.h5",
+  "spatial_image": "s3://dinesh-rdr-omics-2026/cell-com-input/mouse_brain.tif",
+  "sra_accessions": "SRR6470906,SRR6470907,SRR6470908,SRR6470910,SRR6470911,SRR6470912,SRR6470915,SRR6470916,SRR6470917,SRR6470923,SRR6470924,SRR6470925",
+  "outdir": "s3://dinesh-rdr-omics-2026/results/golden_standard",
+  "min_genes": 200,
+  "min_cells": 3,
+  "max_genes": 5000,
+  "mt_percent_max": 20,
+  "n_top_genes": 2000,
+  "n_pcs": 50,
+  "clustering_resolution": 0.5,
+  "n_neighbors": 15,
+  "n_epochs": 200,
+  "learning_rate": 0.01,
+  "hidden_dim": 128,
+  "ccc_distance_threshold": 500,
+  "genome": "mm10"
+}

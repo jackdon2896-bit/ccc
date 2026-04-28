@@ -1,0 +1,461 @@
+Apr-28 07:46:12.509 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -preview
+Apr-28 07:46:12.621 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.10.4
+Apr-28 07:46:12.661 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/bedrock_agentcore/.nextflow/plugins; core-plugins: nf-amazon@3.4.4,nf-azure@1.20.2,nf-cloudcache@0.5.0,nf-codecommit@0.5.0,nf-console@1.3.0,nf-google@1.23.5,nf-k8s@1.2.2,nf-tower@1.17.5,nf-wave@1.16.1
+Apr-28 07:46:12.692 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Apr-28 07:46:12.692 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Apr-28 07:46:12.695 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Apr-28 07:46:12.708 [main] DEBUG nextflow.util.RetryConfig - Missing nextflow session - using default retry config
+Apr-28 07:46:12.873 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Apr-28 07:46:12.914 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /app/home/user/ccc/nextflow.config
+Apr-28 07:46:12.919 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /app/home/user/ccc/nextflow.config
+Apr-28 07:46:12.958 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Apr-28 07:46:13.863 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Apr-28 07:46:13.864 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[nf-wave@1.16.1]
+Apr-28 07:46:14.087 [main] DEBUG n.plugin.HttpPluginRepository - Registry request: https://registry.nextflow.io/api/v1/plugins/dependencies?plugins=nf-wave%401.16.1&nextflowVersion=25.10.4
+- code: 200
+- body: {"plugins":[{"id":"nf-wave","releases":[{"version":"1.16.1","url":"https://registry.nextflow.io/api/v1/plugins/nf-wave/1.16.1/download/nf-wave-1.16.1.zip","date":"2025-10-21T15:57:24.05097Z","sha512sum":"721a14fef9680fc633700561385c4e9d49ad92cab120a556d26686d1bdca74e225888860df8ee85ab5acb808d0a50df04ce78a6be0259b0e91142cd74d01f7c3","requires":">=25.09.2-edge","dependsOn":[],"status":"PUBLISHED"}],"projectUrl":"https://github.com/nextflow-io/nf-wave","provider":"nextflow-io"}]}
+Apr-28 07:46:14.157 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-wave version: 1.16.1
+Apr-28 07:46:14.168 [main] INFO  nextflow.plugin.PluginUpdater - Downloading plugin nf-wave@1.16.1
+Apr-28 07:46:14.632 [main] INFO  org.pf4j.util.FileUtils - Expanded plugin zip 'nf-wave-1.16.1.zip' in 'nf-wave-1.16.1'
+Apr-28 07:46:14.639 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-wave@1.16.1' resolved
+Apr-28 07:46:14.640 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-wave@1.16.1'
+Apr-28 07:46:14.665 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-wave@1.16.1
+Apr-28 07:46:14.680 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/bedrock_agentcore/.nextflow/secrets/store.json
+Apr-28 07:46:14.683 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@1e7f19b4] - activable => nextflow.secret.LocalSecretsProvider@1e7f19b4
+Apr-28 07:46:14.695 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Apr-28 07:46:14.715 [main] DEBUG nextflow.cli.CmdRun - * PREVIEW * null [insane_davinci] DSL2 - revision: f15bd33298
+Apr-28 07:46:14.766 [main] DEBUG nextflow.Session - Session UUID: 1acea67a-b93a-4226-8209-60908654a9cd
+Apr-28 07:46:14.766 [main] DEBUG nextflow.Session - Run name: insane_davinci
+Apr-28 07:46:14.767 [main] DEBUG nextflow.Session - Executor pool size: 2
+Apr-28 07:46:14.775 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Apr-28 07:46:14.780 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Apr-28 07:46:14.794 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.10.4 build 11177
+  Created: 10-02-2026 17:12 UTC 
+  System: Linux 6.1.158-15.288.amzn2023.aarch64
+  Runtime: Groovy 4.0.28 on OpenJDK 64-Bit Server VM 17.0.18+8-Debian-1deb12u1
+  Encoding: UTF-8 (UTF-8)
+  Process: 430@localhost [127.0.0.1]
+  CPUs: 2 - Mem: 7.8 GB (5.3 GB) - Swap: 0 (0)
+Apr-28 07:46:14.815 [main] DEBUG nextflow.Session - Work-dir: /app/home/user/ccc/work [overlayfs]
+Apr-28 07:46:14.845 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Apr-28 07:46:14.857 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Apr-28 07:46:14.861 [main] DEBUG nextflow.Session - Observer factory (v2): DefaultObserverFactory
+Apr-28 07:46:14.890 [main] DEBUG n.plugin.HttpPluginRepository - Registry request: https://registry.nextflow.io/api/v1/plugins/dependencies?plugins=nf-amazon%403.4.4&nextflowVersion=25.10.4
+- code: 200
+- body: {"plugins":[{"id":"nf-amazon","releases":[{"version":"3.4.4","url":"https://registry.nextflow.io/api/v1/plugins/nf-amazon/3.4.4/download/nf-amazon-3.4.4.zip","date":"2026-02-10T15:21:20.535204Z","sha512sum":"76c37dc3b526e6d06b7fb5c171cd0679da4a5f7c6545eb16fba4ca5e7d812c60f555fb7a71718955a93aa02a22fec73b0e220ca0998725a0dbda0333b0f106ac","requires":">=25.09.2-edge","dependsOn":[],"status":"PUBLISHED"}],"projectUrl":"https://github.com/nextflow-io/nf-amazon","provider":"nextflow-io"}]}
+Apr-28 07:46:14.891 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-amazon version: 3.4.4
+Apr-28 07:46:14.891 [main] INFO  nextflow.plugin.PluginUpdater - Downloading plugin nf-amazon@3.4.4
+Apr-28 07:46:16.537 [main] INFO  org.pf4j.util.FileUtils - Expanded plugin zip 'nf-amazon-3.4.4.zip' in 'nf-amazon-3.4.4'
+Apr-28 07:46:16.541 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-amazon@3.4.4' resolved
+Apr-28 07:46:16.542 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-amazon@3.4.4'
+Apr-28 07:46:16.559 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-amazon@3.4.4
+Apr-28 07:46:16.582 [main] DEBUG nextflow.file.FileHelper - > Added 'S3FileSystemProvider' to list of installed providers [s3]
+Apr-28 07:46:16.582 [main] DEBUG nextflow.file.FileHelper - Started plugin 'nf-amazon' required to handle file: s3://dinesh-rdr-omics-2026/results/golden_standard/pipeline_info/dag.html
+Apr-28 07:46:16.593 [main] DEBUG nextflow.file.FileHelper - Creating a file system instance for provider: S3FileSystemProvider; config=[:]
+Apr-28 07:46:16.606 [main] DEBUG nextflow.cloud.aws.config.AwsConfig - AWS S3 config properties: {max_error_retry=5}
+Apr-28 07:46:17.514 [main] DEBUG nextflow.cloud.aws.nio.S3Client - Unable to fetch caller account - User: arn:aws:sts::876014314818:assumed-role/bedrock-agentcore-runtime-role/BedrockAgentCore-964e54fc-231e-4002-bf18-ee419c323b2f is not authorized to perform: s3:ListAllMyBuckets with an explicit deny in an identity-based policy (Service: S3, Status Code: 403, Request ID: 9X65CHD036JMQDG2, Extended Request ID: Xdjm39/XX3bSPcqjf4T7UzN7qfjkwtTvZQC+wtshmW1c3jmJ2KCsRVLd2P3E2vkDCUVbOjSCUCo=) (SDK Attempt Count: 1) 
+Apr-28 07:46:17.557 [main] DEBUG nextflow.Session - Observer factory (v2): WaveFactory
+Apr-28 07:46:17.608 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Apr-28 07:46:17.620 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
+Apr-28 07:46:17.666 [main] DEBUG nextflow.Session - Session start
+Apr-28 07:46:18.219 [main] DEBUG nextflow.Session - Access Denied (Service: S3, Status Code: 403, Request ID: 1T1KG8ZDFH7C1XPW, Extended Request ID: xP/KrCxxZDTn6Xt80Jsotu2CDPUejNEGHAiVJHVpcWwlGePlGl1lkTH2aQR/sQffDcNfXRDjfIA=) (SDK Attempt Count: 1)
+software.amazon.awssdk.services.s3.model.S3Exception: Access Denied (Service: S3, Status Code: 403, Request ID: 1T1KG8ZDFH7C1XPW, Extended Request ID: xP/KrCxxZDTn6Xt80Jsotu2CDPUejNEGHAiVJHVpcWwlGePlGl1lkTH2aQR/sQffDcNfXRDjfIA=) (SDK Attempt Count: 1)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:113)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:61)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.utils.RetryableStageHelper.retryPolicyDisallowedRetryException(RetryableStageHelper.java:168)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:73)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:36)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:53)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:35)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.executeWithTimer(ApiCallTimeoutTrackingStage.java:82)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:62)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:43)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:50)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:32)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:37)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:26)
+	at software.amazon.awssdk.core.internal.http.AmazonSyncHttpClient$RequestExecutionBuilderImpl.execute(AmazonSyncHttpClient.java:210)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.invoke(BaseSyncClientHandler.java:103)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.doExecute(BaseSyncClientHandler.java:173)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.lambda$execute$1(BaseSyncClientHandler.java:80)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.measureApiCallSuccess(BaseSyncClientHandler.java:182)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.execute(BaseSyncClientHandler.java:74)
+	at software.amazon.awssdk.core.client.handler.SdkSyncClientHandler.execute(SdkSyncClientHandler.java:45)
+	at software.amazon.awssdk.awscore.client.handler.AwsSyncClientHandler.execute(AwsSyncClientHandler.java:53)
+	at software.amazon.awssdk.services.s3.DefaultS3Client.listObjects(DefaultS3Client.java:8563)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.lambda$listObjects$68(DelegatingS3Client.java:6934)
+	at software.amazon.awssdk.services.s3.internal.crossregion.S3CrossRegionSyncClient.invokeOperation(S3CrossRegionSyncClient.java:74)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.listObjects(DelegatingS3Client.java:6934)
+	at nextflow.cloud.aws.nio.S3Client.lambda$listObjects$2(S3Client.java:150)
+	at nextflow.cloud.aws.nio.S3Client.runWithPermit(S3Client.java:106)
+	at nextflow.cloud.aws.nio.S3Client.listObjects(S3Client.java:150)
+	at nextflow.cloud.aws.nio.util.S3ObjectSummaryLookup.lookup(S3ObjectSummaryLookup.java:81)
+	at nextflow.cloud.aws.nio.S3FileSystemProvider.readAttr0(S3FileSystemProvider.java:689)
+	at nextflow.cloud.aws.nio.S3FileSystemProvider.readAttributes(S3FileSystemProvider.java:673)
+	at java.base/java.nio.file.Files.readAttributes(Files.java:1851)
+	at nextflow.file.FileHelper.readAttributes(FileHelper.groovy:1095)
+	at nextflow.trace.GraphObserver.onFlowCreate(GraphObserver.groovy:70)
+	at nextflow.Session$_notifyFlowCreate_lambda34.doCall(Session.groovy:1107)
+	at nextflow.Session.notifyEvent(Session.groovy:1151)
+	at nextflow.Session.notifyFlowCreate(Session.groovy:1107)
+	at nextflow.Session.start(Session.groovy:596)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:133)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:429)
+	at nextflow.cli.Launcher.run(Launcher.groovy:515)
+	at nextflow.cli.Launcher.main(Launcher.groovy:675)
+Apr-28 07:46:18.386 [main] DEBUG nextflow.Session - Access Denied (Service: S3, Status Code: 403, Request ID: 1T1ZZ1M51Q3VQ44J, Extended Request ID: QCh/2L9oaPgkkP4quoCCnNV9h4YbINpGmzon6ejgAxuf1RyJZ6te2a2RY0/d3CMXFjAGeMUWUF0=) (SDK Attempt Count: 1)
+software.amazon.awssdk.services.s3.model.S3Exception: Access Denied (Service: S3, Status Code: 403, Request ID: 1T1ZZ1M51Q3VQ44J, Extended Request ID: QCh/2L9oaPgkkP4quoCCnNV9h4YbINpGmzon6ejgAxuf1RyJZ6te2a2RY0/d3CMXFjAGeMUWUF0=) (SDK Attempt Count: 1)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:113)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:61)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.utils.RetryableStageHelper.retryPolicyDisallowedRetryException(RetryableStageHelper.java:168)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:73)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:36)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:53)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:35)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.executeWithTimer(ApiCallTimeoutTrackingStage.java:82)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:62)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:43)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:50)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:32)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:37)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:26)
+	at software.amazon.awssdk.core.internal.http.AmazonSyncHttpClient$RequestExecutionBuilderImpl.execute(AmazonSyncHttpClient.java:210)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.invoke(BaseSyncClientHandler.java:103)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.doExecute(BaseSyncClientHandler.java:173)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.lambda$execute$1(BaseSyncClientHandler.java:80)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.measureApiCallSuccess(BaseSyncClientHandler.java:182)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.execute(BaseSyncClientHandler.java:74)
+	at software.amazon.awssdk.core.client.handler.SdkSyncClientHandler.execute(SdkSyncClientHandler.java:45)
+	at software.amazon.awssdk.awscore.client.handler.AwsSyncClientHandler.execute(AwsSyncClientHandler.java:53)
+	at software.amazon.awssdk.services.s3.DefaultS3Client.listObjects(DefaultS3Client.java:8563)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.lambda$listObjects$68(DelegatingS3Client.java:6934)
+	at software.amazon.awssdk.services.s3.internal.crossregion.S3CrossRegionSyncClient.invokeOperation(S3CrossRegionSyncClient.java:74)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.listObjects(DelegatingS3Client.java:6934)
+	at nextflow.cloud.aws.nio.S3Client.lambda$listObjects$2(S3Client.java:150)
+	at nextflow.cloud.aws.nio.S3Client.runWithPermit(S3Client.java:106)
+	at nextflow.cloud.aws.nio.S3Client.listObjects(S3Client.java:150)
+	at nextflow.cloud.aws.nio.util.S3ObjectSummaryLookup.lookup(S3ObjectSummaryLookup.java:81)
+	at nextflow.cloud.aws.nio.S3FileSystemProvider.checkAccess(S3FileSystemProvider.java:586)
+	at java.base/java.nio.file.Files.exists(Files.java:2527)
+	at nextflow.trace.ReportObserver.onFlowCreate(ReportObserver.groovy:118)
+	at nextflow.Session$_notifyFlowCreate_lambda34.doCall(Session.groovy:1107)
+	at nextflow.Session.notifyEvent(Session.groovy:1151)
+	at nextflow.Session.notifyFlowCreate(Session.groovy:1107)
+	at nextflow.Session.start(Session.groovy:596)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:133)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:429)
+	at nextflow.cli.Launcher.run(Launcher.groovy:515)
+	at nextflow.cli.Launcher.main(Launcher.groovy:675)
+Apr-28 07:46:18.548 [main] DEBUG nextflow.Session - Access Denied (Service: S3, Status Code: 403, Request ID: 1T1QWREB0CC5W335, Extended Request ID: 39ZGm05d7MV4t5Tog5wnY2aekyRFyfrYJ7sxg6AYO4s8ijcsgByKaIUUc2VOsTMomBS5Djbvnzw=) (SDK Attempt Count: 1)
+software.amazon.awssdk.services.s3.model.S3Exception: Access Denied (Service: S3, Status Code: 403, Request ID: 1T1QWREB0CC5W335, Extended Request ID: 39ZGm05d7MV4t5Tog5wnY2aekyRFyfrYJ7sxg6AYO4s8ijcsgByKaIUUc2VOsTMomBS5Djbvnzw=) (SDK Attempt Count: 1)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:113)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:61)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.utils.RetryableStageHelper.retryPolicyDisallowedRetryException(RetryableStageHelper.java:168)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:73)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:36)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:53)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:35)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.executeWithTimer(ApiCallTimeoutTrackingStage.java:82)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:62)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:43)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:50)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:32)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:37)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:26)
+	at software.amazon.awssdk.core.internal.http.AmazonSyncHttpClient$RequestExecutionBuilderImpl.execute(AmazonSyncHttpClient.java:210)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.invoke(BaseSyncClientHandler.java:103)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.doExecute(BaseSyncClientHandler.java:173)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.lambda$execute$1(BaseSyncClientHandler.java:80)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.measureApiCallSuccess(BaseSyncClientHandler.java:182)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.execute(BaseSyncClientHandler.java:74)
+	at software.amazon.awssdk.core.client.handler.SdkSyncClientHandler.execute(SdkSyncClientHandler.java:45)
+	at software.amazon.awssdk.awscore.client.handler.AwsSyncClientHandler.execute(AwsSyncClientHandler.java:53)
+	at software.amazon.awssdk.services.s3.DefaultS3Client.listObjects(DefaultS3Client.java:8563)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.lambda$listObjects$68(DelegatingS3Client.java:6934)
+	at software.amazon.awssdk.services.s3.internal.crossregion.S3CrossRegionSyncClient.invokeOperation(S3CrossRegionSyncClient.java:74)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.listObjects(DelegatingS3Client.java:6934)
+	at nextflow.cloud.aws.nio.S3Client.lambda$listObjects$2(S3Client.java:150)
+	at nextflow.cloud.aws.nio.S3Client.runWithPermit(S3Client.java:106)
+	at nextflow.cloud.aws.nio.S3Client.listObjects(S3Client.java:150)
+	at nextflow.cloud.aws.nio.util.S3ObjectSummaryLookup.lookup(S3ObjectSummaryLookup.java:81)
+	at nextflow.cloud.aws.nio.S3FileSystemProvider.checkAccess(S3FileSystemProvider.java:586)
+	at java.base/java.nio.file.Files.exists(Files.java:2527)
+	at nextflow.trace.TimelineObserver.onFlowCreate(TimelineObserver.groovy:79)
+	at nextflow.Session$_notifyFlowCreate_lambda34.doCall(Session.groovy:1107)
+	at nextflow.Session.notifyEvent(Session.groovy:1151)
+	at nextflow.Session.notifyFlowCreate(Session.groovy:1107)
+	at nextflow.Session.start(Session.groovy:596)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:133)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:429)
+	at nextflow.cli.Launcher.run(Launcher.groovy:515)
+	at nextflow.cli.Launcher.main(Launcher.groovy:675)
+Apr-28 07:46:18.550 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: s3://dinesh-rdr-omics-2026/results/golden_standard/pipeline_info/trace.txt
+Apr-28 07:46:18.680 [main] DEBUG nextflow.Session - Access Denied (Service: S3, Status Code: 403, Request ID: 1T1QK4EFV5QHDYS5, Extended Request ID: mITX51ADqBtyXMCbvuknK2nLu1uYJL3w4p72EG4eEBZ2IwRpNXVen42TQ1LPCCviqk8YejSWa7s=) (SDK Attempt Count: 1)
+software.amazon.awssdk.services.s3.model.S3Exception: Access Denied (Service: S3, Status Code: 403, Request ID: 1T1QK4EFV5QHDYS5, Extended Request ID: mITX51ADqBtyXMCbvuknK2nLu1uYJL3w4p72EG4eEBZ2IwRpNXVen42TQ1LPCCviqk8YejSWa7s=) (SDK Attempt Count: 1)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:113)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:61)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.utils.RetryableStageHelper.retryPolicyDisallowedRetryException(RetryableStageHelper.java:168)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:73)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:36)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:53)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:35)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.executeWithTimer(ApiCallTimeoutTrackingStage.java:82)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:62)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:43)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:50)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:32)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:37)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:26)
+	at software.amazon.awssdk.core.internal.http.AmazonSyncHttpClient$RequestExecutionBuilderImpl.execute(AmazonSyncHttpClient.java:210)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.invoke(BaseSyncClientHandler.java:103)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.doExecute(BaseSyncClientHandler.java:173)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.lambda$execute$1(BaseSyncClientHandler.java:80)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.measureApiCallSuccess(BaseSyncClientHandler.java:182)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.execute(BaseSyncClientHandler.java:74)
+	at software.amazon.awssdk.core.client.handler.SdkSyncClientHandler.execute(SdkSyncClientHandler.java:45)
+	at software.amazon.awssdk.awscore.client.handler.AwsSyncClientHandler.execute(AwsSyncClientHandler.java:53)
+	at software.amazon.awssdk.services.s3.DefaultS3Client.putObject(DefaultS3Client.java:11883)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.lambda$putObject$89(DelegatingS3Client.java:9716)
+	at software.amazon.awssdk.services.s3.internal.crossregion.S3CrossRegionSyncClient.invokeOperation(S3CrossRegionSyncClient.java:67)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.putObject(DelegatingS3Client.java:9716)
+	at nextflow.cloud.aws.nio.S3Client.lambda$putObject$5(S3Client.java:223)
+	at nextflow.cloud.aws.nio.S3Client.runWithPermit(S3Client.java:106)
+	at nextflow.cloud.aws.nio.S3Client.putObject(S3Client.java:223)
+	at nextflow.cloud.aws.nio.S3FileSystemProvider.createDirectory(S3FileSystemProvider.java:474)
+	at java.base/java.nio.file.Files.createDirectory(Files.java:700)
+	at java.base/java.nio.file.Files.createAndCheckIsDirectory(Files.java:807)
+	at java.base/java.nio.file.Files.createDirectories(Files.java:753)
+	at nextflow.trace.TraceFileObserver.onFlowCreate(TraceFileObserver.groovy:171)
+	at nextflow.Session$_notifyFlowCreate_lambda34.doCall(Session.groovy:1107)
+	at nextflow.Session.notifyEvent(Session.groovy:1151)
+	at nextflow.Session.notifyFlowCreate(Session.groovy:1107)
+	at nextflow.Session.start(Session.groovy:596)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:133)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:429)
+	at nextflow.cli.Launcher.run(Launcher.groovy:515)
+	at nextflow.cli.Launcher.main(Launcher.groovy:675)
+Apr-28 07:46:19.339 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+Apr-28 07:46:19.354 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
+Apr-28 07:46:19.750 [main] DEBUG nextflow.Session - Access Denied (Service: S3, Status Code: 403, Request ID: 4EB1N2S1TVQQZYGC, Extended Request ID: dP3dsHrmBIsHTp6MzXLL6gpRcqNQVD4Ze7TxuB2N5mzlvMPKF9+Ey7KE+sOYeFP9T+5cZ7inW4o=) (SDK Attempt Count: 1)
+software.amazon.awssdk.services.s3.model.S3Exception: Access Denied (Service: S3, Status Code: 403, Request ID: 4EB1N2S1TVQQZYGC, Extended Request ID: dP3dsHrmBIsHTp6MzXLL6gpRcqNQVD4Ze7TxuB2N5mzlvMPKF9+Ey7KE+sOYeFP9T+5cZ7inW4o=) (SDK Attempt Count: 1)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:113)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:61)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.utils.RetryableStageHelper.retryPolicyDisallowedRetryException(RetryableStageHelper.java:168)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:73)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:36)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:53)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:35)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.executeWithTimer(ApiCallTimeoutTrackingStage.java:82)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:62)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:43)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:50)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:32)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:37)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:26)
+	at software.amazon.awssdk.core.internal.http.AmazonSyncHttpClient$RequestExecutionBuilderImpl.execute(AmazonSyncHttpClient.java:210)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.invoke(BaseSyncClientHandler.java:103)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.doExecute(BaseSyncClientHandler.java:173)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.lambda$execute$1(BaseSyncClientHandler.java:80)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.measureApiCallSuccess(BaseSyncClientHandler.java:182)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.execute(BaseSyncClientHandler.java:74)
+	at software.amazon.awssdk.core.client.handler.SdkSyncClientHandler.execute(SdkSyncClientHandler.java:45)
+	at software.amazon.awssdk.awscore.client.handler.AwsSyncClientHandler.execute(AwsSyncClientHandler.java:53)
+	at software.amazon.awssdk.services.s3.DefaultS3Client.putObject(DefaultS3Client.java:11883)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.lambda$putObject$89(DelegatingS3Client.java:9716)
+	at software.amazon.awssdk.services.s3.internal.crossregion.S3CrossRegionSyncClient.invokeOperation(S3CrossRegionSyncClient.java:67)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.putObject(DelegatingS3Client.java:9716)
+	at nextflow.cloud.aws.nio.S3Client.lambda$putObject$5(S3Client.java:223)
+	at nextflow.cloud.aws.nio.S3Client.runWithPermit(S3Client.java:106)
+	at nextflow.cloud.aws.nio.S3Client.putObject(S3Client.java:223)
+	at nextflow.cloud.aws.nio.S3FileSystemProvider.createDirectory(S3FileSystemProvider.java:474)
+	at java.base/java.nio.file.Files.createDirectory(Files.java:700)
+	at java.base/java.nio.file.Files.createAndCheckIsDirectory(Files.java:807)
+	at java.base/java.nio.file.Files.createDirectories(Files.java:753)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.selectMethod(IndyInterface.java:355)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.extension.FilesEx.mkdirs(FilesEx.groovy:493)
+	at nextflow.trace.GraphObserver.onFlowComplete(GraphObserver.groovy:85)
+	at nextflow.Session$_notifyFlowComplete_lambda39.doCall(Session.groovy:1121)
+	at nextflow.Session.notifyEvent(Session.groovy:1151)
+	at nextflow.Session.notifyFlowComplete(Session.groovy:1121)
+	at nextflow.Session.shutdown0(Session.groovy:779)
+	at nextflow.Session.abort(Session.groovy:834)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:150)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:429)
+	at nextflow.cli.Launcher.run(Launcher.groovy:515)
+	at nextflow.cli.Launcher.main(Launcher.groovy:675)
+Apr-28 07:46:19.750 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Apr-28 07:46:20.660 [main] WARN  nextflow.trace.ReportObserver - Failed to render execution report -- see the log file for details
+software.amazon.awssdk.services.s3.model.S3Exception: Access Denied (Service: S3, Status Code: 403, Request ID: 97B6JH7ZGSQ2BDXT, Extended Request ID: Is9GIndGvd5b+IuZLu8xdyMjRYkEtMCqCNkqxUGykscDSfl4L+sVQr8O3UuHp7DEauJ8s3m1cr8=) (SDK Attempt Count: 1)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:113)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:61)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.utils.RetryableStageHelper.retryPolicyDisallowedRetryException(RetryableStageHelper.java:168)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:73)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:36)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:53)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:35)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.executeWithTimer(ApiCallTimeoutTrackingStage.java:82)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:62)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:43)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:50)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:32)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:37)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:26)
+	at software.amazon.awssdk.core.internal.http.AmazonSyncHttpClient$RequestExecutionBuilderImpl.execute(AmazonSyncHttpClient.java:210)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.invoke(BaseSyncClientHandler.java:103)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.doExecute(BaseSyncClientHandler.java:173)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.lambda$execute$1(BaseSyncClientHandler.java:80)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.measureApiCallSuccess(BaseSyncClientHandler.java:182)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.execute(BaseSyncClientHandler.java:74)
+	at software.amazon.awssdk.core.client.handler.SdkSyncClientHandler.execute(SdkSyncClientHandler.java:45)
+	at software.amazon.awssdk.awscore.client.handler.AwsSyncClientHandler.execute(AwsSyncClientHandler.java:53)
+	at software.amazon.awssdk.services.s3.DefaultS3Client.putObject(DefaultS3Client.java:11883)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.lambda$putObject$89(DelegatingS3Client.java:9716)
+	at software.amazon.awssdk.services.s3.internal.crossregion.S3CrossRegionSyncClient.invokeOperation(S3CrossRegionSyncClient.java:67)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.putObject(DelegatingS3Client.java:9716)
+	at nextflow.cloud.aws.nio.S3Client.lambda$putObject$5(S3Client.java:223)
+	at nextflow.cloud.aws.nio.S3Client.runWithPermit(S3Client.java:106)
+	at nextflow.cloud.aws.nio.S3Client.putObject(S3Client.java:223)
+	at nextflow.cloud.aws.nio.S3FileSystemProvider.createDirectory(S3FileSystemProvider.java:474)
+	at java.base/java.nio.file.Files.createDirectory(Files.java:700)
+	at java.base/java.nio.file.Files.createAndCheckIsDirectory(Files.java:807)
+	at java.base/java.nio.file.Files.createDirectories(Files.java:753)
+	at nextflow.trace.ReportObserver.renderHtml(ReportObserver.groovy:241)
+	at nextflow.trace.ReportObserver.onFlowComplete(ReportObserver.groovy:129)
+	at nextflow.Session$_notifyFlowComplete_lambda39.doCall(Session.groovy:1121)
+	at nextflow.Session.notifyEvent(Session.groovy:1151)
+	at nextflow.Session.notifyFlowComplete(Session.groovy:1121)
+	at nextflow.Session.shutdown0(Session.groovy:779)
+	at nextflow.Session.abort(Session.groovy:834)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:150)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:429)
+	at nextflow.cli.Launcher.run(Launcher.groovy:515)
+	at nextflow.cli.Launcher.main(Launcher.groovy:675)
+Apr-28 07:46:20.661 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Apr-28 07:46:20.989 [main] WARN  nextflow.trace.TimelineObserver - Failed to render execution timeline -- see the log file for details
+software.amazon.awssdk.services.s3.model.S3Exception: Access Denied (Service: S3, Status Code: 403, Request ID: 97BDCXRNQTQJR8KQ, Extended Request ID: LcdMx0q1ppgdPlH9jpqLe8UPm5qpCwQaUl/iFSol6Kv52KP8hnO8FPnAQfDdIQGDN8AwYJmFTug=) (SDK Attempt Count: 1)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:113)
+	at software.amazon.awssdk.services.s3.model.S3Exception$BuilderImpl.build(S3Exception.java:61)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.utils.RetryableStageHelper.retryPolicyDisallowedRetryException(RetryableStageHelper.java:168)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:73)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:36)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:53)
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:35)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.executeWithTimer(ApiCallTimeoutTrackingStage.java:82)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:62)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:43)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:50)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:32)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:37)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:26)
+	at software.amazon.awssdk.core.internal.http.AmazonSyncHttpClient$RequestExecutionBuilderImpl.execute(AmazonSyncHttpClient.java:210)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.invoke(BaseSyncClientHandler.java:103)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.doExecute(BaseSyncClientHandler.java:173)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.lambda$execute$1(BaseSyncClientHandler.java:80)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.measureApiCallSuccess(BaseSyncClientHandler.java:182)
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.execute(BaseSyncClientHandler.java:74)
+	at software.amazon.awssdk.core.client.handler.SdkSyncClientHandler.execute(SdkSyncClientHandler.java:45)
+	at software.amazon.awssdk.awscore.client.handler.AwsSyncClientHandler.execute(AwsSyncClientHandler.java:53)
+	at software.amazon.awssdk.services.s3.DefaultS3Client.putObject(DefaultS3Client.java:11883)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.lambda$putObject$89(DelegatingS3Client.java:9716)
+	at software.amazon.awssdk.services.s3.internal.crossregion.S3CrossRegionSyncClient.invokeOperation(S3CrossRegionSyncClient.java:67)
+	at software.amazon.awssdk.services.s3.DelegatingS3Client.putObject(DelegatingS3Client.java:9716)
+	at nextflow.cloud.aws.nio.S3Client.lambda$putObject$5(S3Client.java:223)
+	at nextflow.cloud.aws.nio.S3Client.runWithPermit(S3Client.java:106)
+	at nextflow.cloud.aws.nio.S3Client.putObject(S3Client.java:223)
+	at nextflow.cloud.aws.nio.S3FileSystemProvider.createDirectory(S3FileSystemProvider.java:474)
+	at java.base/java.nio.file.Files.createDirectory(Files.java:700)
+	at java.base/java.nio.file.Files.createAndCheckIsDirectory(Files.java:807)
+	at java.base/java.nio.file.Files.createDirectories(Files.java:753)
+	at nextflow.trace.TimelineObserver.renderHtml(TimelineObserver.groovy:162)
+	at nextflow.trace.TimelineObserver.onFlowComplete(TimelineObserver.groovy:91)
+	at nextflow.Session$_notifyFlowComplete_lambda39.doCall(Session.groovy:1121)
+	at nextflow.Session.notifyEvent(Session.groovy:1151)
+	at nextflow.Session.notifyFlowComplete(Session.groovy:1121)
+	at nextflow.Session.shutdown0(Session.groovy:779)
+	at nextflow.Session.abort(Session.groovy:834)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:150)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:429)
+	at nextflow.cli.Launcher.run(Launcher.groovy:515)
+	at nextflow.cli.Launcher.main(Launcher.groovy:675)
+Apr-28 07:46:20.990 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Apr-28 07:46:20.990 [main] DEBUG nextflow.Session - Cannot invoke "groovyx.gpars.agent.Agent.await()" because "this.writer" is null
+java.lang.NullPointerException: Cannot invoke "groovyx.gpars.agent.Agent.await()" because "this.writer" is null
+	at nextflow.trace.TraceFileObserver.onFlowComplete(TraceFileObserver.groovy:189)
+	at nextflow.Session$_notifyFlowComplete_lambda39.doCall(Session.groovy:1121)
+	at nextflow.Session.notifyEvent(Session.groovy:1151)
+	at nextflow.Session.notifyFlowComplete(Session.groovy:1121)
+	at nextflow.Session.shutdown0(Session.groovy:779)
+	at nextflow.Session.abort(Session.groovy:834)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:150)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:429)
+	at nextflow.cli.Launcher.run(Launcher.groovy:515)
+	at nextflow.cli.Launcher.main(Launcher.groovy:675)
+Apr-28 07:46:20.996 [main] ERROR nextflow.cli.Launcher - Script compilation error
+- file : /app/home/user/ccc/main.nf
+- cause: Duplicate entry workflow definition @ line 531, column 9.
+   workflow {
+           ^
+
+1 error
+
+nextflow.exception.ScriptCompilationException: Script compilation error
+- file : /app/home/user/ccc/main.nf
+- cause: Duplicate entry workflow definition @ line 531, column 9.
+   workflow {
+           ^
+
+1 error
+
+	at nextflow.script.parser.v1.ScriptLoaderV1.parse0(ScriptLoaderV1.groovy:204)
+	at nextflow.script.parser.v1.ScriptLoaderV1.parse(ScriptLoaderV1.groovy:215)
+	at nextflow.script.parser.v1.ScriptLoaderV1.parse(ScriptLoaderV1.groovy)
+	at nextflow.script.ScriptRunner.parseScript(ScriptRunner.groovy:232)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:137)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:429)
+	at nextflow.cli.Launcher.run(Launcher.groovy:515)
+	at nextflow.cli.Launcher.main(Launcher.groovy:675)
+Caused by: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+Script_3c4d271fe6f38f42: 531: Duplicate entry workflow definition @ line 531, column 9.
+   workflow {
+           ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:292)
+	at org.codehaus.groovy.control.CompilationUnit$IPrimaryClassNodeOperation.doPhaseOperation(CompilationUnit.java:948)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:660)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:634)
+	at groovy.lang.GroovyClassLoader.doParseClass(GroovyClassLoader.java:365)
+	at groovy.lang.GroovyClassLoader.lambda$parseClass$2(GroovyClassLoader.java:314)
+	at org.codehaus.groovy.runtime.memoize.StampedCommonCache.compute(StampedCommonCache.java:163)
+	at org.codehaus.groovy.runtime.memoize.StampedCommonCache.getAndPut(StampedCommonCache.java:154)
+	at groovy.lang.GroovyClassLoader.parseClass(GroovyClassLoader.java:314)
+	at groovy.lang.GroovyShell.parseClass(GroovyShell.java:572)
+	at groovy.lang.GroovyShell.parse(GroovyShell.java:585)
+	at groovy.lang.GroovyShell.parse(GroovyShell.java:639)
+	at groovy.lang.GroovyShell.parse(GroovyShell.java:643)
+	at nextflow.script.parser.v1.ScriptLoaderV1.parse0(ScriptLoaderV1.groovy:183)
+	... 7 common frames omitted
